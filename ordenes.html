@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema de Carga — Órdenes</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+  <div class="layout">
+
+    <aside class="sidebar">
+      <div class="sb-logo">
+        <div class="sb-logomark">
+          <div class="sb-cube">
+            <div class="sb-cube-dot"></div><div class="sb-cube-dot"></div>
+            <div class="sb-cube-dot"></div><div class="sb-cube-dot"></div>
+          </div>
+          <span class="sb-name">MarsTech</span>
+        </div>
+        <div class="sb-tag">LOGISTICS · v2.0</div>
+      </div>
+     <nav class="sb-nav">
+      <div class="sb-section-lbl">WORKSPACE</div>
+      <a href="dashboard.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Overview</div></a>
+      <a href="clientes.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Clientes</div></a>
+      <a href="ventas.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Ventas</div></a>
+      <div class="sb-spacer"><div class="sb-section-lbl">OPERACIONES</div></div>
+      <a href="ordenes.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Órdenes</div></a>
+      <a href="hitos.html" class="nav-item alert-nav"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Hitos</div></a>
+      <a href="finanzas.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Finanzas</div></a>
+      <div class="sb-spacer"><div class="sb-section-lbl">ALMACENES</div></div>
+      <a href="stock.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Stock</div></a>
+      <a href="deposito-aduanero.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Depósito Aduanero</div></a>
+      <a href="direccionamiento.html" class="nav-item active"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Direccionamiento</div><div class="nav-pip"></div></a>
+      <div class="sb-spacer"><div class="sb-section-lbl">SISTEMA</div></div>
+      <a href="#" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>Usuarios</div></a>
+    </nav>
+      <div class="sb-bottom">
+        <div class="sb-user">
+          <div class="sb-avatar" id="sb-iniciales">AD</div>
+          <div>
+            <div class="sb-uname" id="sb-nombre">Cargando...</div>
+            <div class="sb-urole" id="sb-rol">—</div>
+            <button class="sb-logout" onclick="cerrarSesion()">Cerrar sesión</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="tb-left">
+          <span class="tb-page">Órdenes</span>
+          <span class="tb-crumb">/ control operativo</span>
+        </div>
+        <div class="tb-right">
+          <div class="tb-chip green"><div class="tb-dot"></div>Online</div>
+          <div class="tb-chip slate" id="tb-fecha">—</div>
+        </div>
+      </header>
+
+      <div class="content">
+
+        <div class="page-header">
+          <div>
+            <div class="page-title">Órdenes</div>
+            <div class="page-sub">// <span id="contador">0</span> órdenes activas</div>
+          </div>
+          <button class="btn btn-primary" onclick="document.getElementById('form-section').scrollIntoView({behavior:'smooth'})">
+            + Nueva orden
+          </button>
+        </div>
+
+        <div class="filtros">
+          <select class="form-select" id="filtro-tipo" style="width:auto;min-width:160px">
+            <option value="TODOS">Todos los tipos</option>
+            <option value="SEA">Marítima (SEA)</option>
+            <option value="AIR">Aérea (AIR)</option>
+            <option value="ADU">Aduanas (ADU)</option>
+            <option value="SLI">Sin levante (SLI)</option>
+            <option value="TL">Transporte (TL)</option>
+          </select>
+          <select class="form-select" id="filtro-estado" style="width:auto;min-width:160px">
+            <option value="TODOS">Todos los estados</option>
+            <option value="creada">Creada</option>
+            <option value="en_curso">En curso</option>
+            <option value="dam_numerada">DAM numerada</option>
+            <option value="levante_otorgado">Levante otorgado</option>
+            <option value="liquidada">Liquidada</option>
+          </select>
+          <input class="form-input filtro-busqueda" type="text" id="filtro-busqueda" placeholder="Buscar por número u origen..." />
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Lista de órdenes</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>NÚMERO</th>
+                <th>TIPO</th>
+                <th>ORIGEN</th>
+                <th>DESTINO</th>
+                <th>AGENTE ORIGEN</th>
+                <th>ESTADO</th>
+                <th>ACCIONES</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-ordenes"></tbody>
+          </table>
+        </div>
+
+        <div class="form-section" id="form-section">
+          <div class="form-section-title">Crear orden nueva</div>
+          <form id="form-nueva-orden">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Número de orden</label>
+                <input class="form-input" type="text" id="numero" placeholder="SEA-260071" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Tipo</label>
+                <select class="form-select" id="tipo">
+                  <option value="SEA">Marítima (SEA)</option>
+                  <option value="AIR">Aérea (AIR)</option>
+                  <option value="ADU">Aduanas (ADU)</option>
+                  <option value="SLI">Sin levante (SLI)</option>
+                  <option value="TL">Transporte (TL)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Régimen aduanero</label>
+                <select class="form-select" id="regimen">
+                  <option value="Importacion definitiva">Importación definitiva</option>
+                  <option value="Admision temporal">Admisión temporal</option>
+                  <option value="Deposito aduanero">Depósito aduanero</option>
+                  <option value="Exportacion">Exportación</option>
+                  <option value="NA">No aplica</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Vía</label>
+                <select class="form-select" id="via">
+                  <option value="Maritima">Marítima</option>
+                  <option value="Aerea">Aérea</option>
+                  <option value="Terrestre">Terrestre</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row" style="margin-top:12px">
+              <div class="form-group">
+                <label class="form-label">Origen</label>
+                <input class="form-input" type="text" id="origen" placeholder="Shanghai - China" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Destino</label>
+                <input class="form-input" type="text" id="destino" placeholder="Callao - Peru" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Agente en origen</label>
+                <input class="form-input" type="text" id="agenteOrigen" placeholder="Nombre del agente" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Observaciones</label>
+                <input class="form-input" type="text" id="observaciones" placeholder="Descripción de la carga..." />
+              </div>
+            </div>
+            <div style="margin-top:16px">
+              <button type="submit" class="btn btn-primary">Crear orden</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/ordenes.js"></script>
+</body>
+</html>

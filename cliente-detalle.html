@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>MarsTech — Cliente</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+  <style>
+    .kpi-cliente { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px; margin-bottom:20px; }
+    .kpi-c { background:#fff; border:1px solid #eef0f6; border-radius:12px; padding:16px; }
+    .kpi-c-lbl { font-size:10px; color:#9ca3af; font-weight:600; letter-spacing:0.5px; margin-bottom:6px; }
+    .kpi-c-val { font-size:22px; font-weight:700; color:#111827; letter-spacing:-0.5px; }
+    .kpi-c-sub { font-size:10px; color:#9ca3af; margin-top:3px; }
+    .tab-nav { display:flex; gap:4px; background:#f3f4f6; padding:4px; border-radius:10px; width:fit-content; margin-bottom:20px; }
+    .tab-nav .tab-btn { padding:7px 16px; border-radius:7px; font-size:12px; font-weight:600; border:none; background:transparent; color:#6b7280; cursor:pointer; transition:all .12s; }
+    .tab-nav .tab-btn.active { background:#7c3aed; color:#fff; }
+    .orden-mini { display:flex; align-items:center; gap:10px; padding:12px 0; border-bottom:1px solid #f9fafb; text-decoration:none; transition:background .1s; }
+    .orden-mini:last-child { border-bottom:none; }
+    .orden-mini:hover { background:#fafbff; }
+    .timeline-op { display:flex; flex-direction:column; gap:0; }
+    .tl-op-item { display:flex; gap:12px; padding-bottom:16px; }
+    .tl-op-item:last-child { padding-bottom:0; }
+    .tl-op-dot { width:10px; height:10px; border-radius:50%; background:#7c3aed; flex-shrink:0; margin-top:4px; }
+    .tl-op-line { width:1px; background:#f3f4f6; flex:1; margin:14px 0 0 4px; position:absolute; left:4px; top:14px; bottom:0; }
+    .tl-op-left { position:relative; width:10px; flex-shrink:0; }
+    .campo-perfil { display:flex; flex-direction:column; gap:4px; }
+    .campo-perfil-lbl { font-size:10px; color:#9ca3af; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; }
+    .campo-perfil-val { font-size:13px; font-weight:500; color:#111827; }
+    .campo-perfil-val.empty { color:#d1d5db; font-style:italic; }
+  </style>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sb-logo">
+      <div class="sb-logomark">
+        <div class="sb-cube">
+          <div class="sb-cube-dot"></div><div class="sb-cube-dot"></div>
+          <div class="sb-cube-dot"></div><div class="sb-cube-dot"></div>
+        </div>
+        <span class="sb-name">MarsTech</span>
+      </div>
+      <div class="sb-tag">LOGISTICS · v2.0</div>
+    </div>
+    <nav class="sb-nav">
+      <div class="sb-section-lbl">WORKSPACE</div>
+      <a href="dashboard.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Overview</div></a>
+      <a href="clientes.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Clientes</div></a>
+      <a href="ventas.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Ventas</div></a>
+      <div class="sb-spacer"><div class="sb-section-lbl">OPERACIONES</div></div>
+      <a href="ordenes.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Órdenes</div></a>
+      <a href="hitos.html" class="nav-item alert-nav"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Hitos</div></a>
+      <a href="finanzas.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Finanzas</div></a>
+      <div class="sb-spacer"><div class="sb-section-lbl">ALMACENES</div></div>
+      <a href="stock.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Stock</div></a>
+      <a href="deposito-aduanero.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Depósito Aduanero</div></a>
+      <a href="direccionamiento.html" class="nav-item active"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Direccionamiento</div><div class="nav-pip"></div></a>
+      <div class="sb-spacer"><div class="sb-section-lbl">SISTEMA</div></div>
+      <a href="#" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>Usuarios</div></a>
+    </nav>
+    <div class="sb-bottom">
+      <div class="sb-user">
+        <div class="sb-avatar" id="sb-iniciales">AD</div>
+        <div>
+          <div class="sb-uname" id="sb-nombre">Cargando...</div>
+          <div class="sb-urole" id="sb-rol">—</div>
+          <button class="sb-logout" onclick="cerrarSesion()">Cerrar sesión</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="tb-left">
+        <a href="clientes.html" class="btn btn-secondary btn-sm" style="gap:4px">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          Clientes
+        </a>
+        <span style="color:#d1d5db">·</span>
+        <span class="tb-page" id="topbar-nombre">Cargando...</span>
+      </div>
+      <div class="tb-right">
+        <button class="btn btn-secondary btn-sm" id="btn-editar-cliente">Editar cliente</button>
+        <div class="tb-date" id="tb-fecha">—</div>
+      </div>
+    </header>
+
+    <div class="content">
+      <div id="loading" style="text-align:center;padding:48px;color:#9ca3af">Cargando...</div>
+      <div id="cliente-content" class="hidden">
+
+        <!-- Header del cliente -->
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;background:#fff;border:1px solid #eef0f6;border-radius:14px;padding:20px">
+          <div id="cli-avatar-grande" style="width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#7c3aed,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff;flex-shrink:0"></div>
+          <div style="flex:1">
+            <div style="font-size:20px;font-weight:700;color:#111827;letter-spacing:-0.3px" id="cli-nombre-grande"></div>
+            <div style="font-size:12px;color:#9ca3af;margin-top:3px" id="cli-ruc-grande"></div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <span id="cli-tipo-badge" class="pill"></span>
+            <span id="cli-pais-badge" style="font-size:12px;color:#6b7280"></span>
+          </div>
+        </div>
+
+        <!-- KPIs -->
+        <div class="kpi-cliente" id="kpis-cliente"></div>
+
+        <!-- Tabs -->
+        <div class="tab-nav">
+          <button class="tab-btn active" data-tab="perfil">Perfil</button>
+          <button class="tab-btn" data-tab="ordenes">Órdenes</button>
+          <button class="tab-btn" data-tab="cotizaciones">Cotizaciones</button>
+          <button class="tab-btn" data-tab="timeline">Línea de tiempo</button>
+          <button class="tab-btn" data-tab="finanzas">Finanzas</button>
+        </div>
+
+        <div id="tab-perfil"       class="tab-content"></div>
+        <div id="tab-ordenes"      class="tab-content hidden"></div>
+        <div id="tab-cotizaciones" class="tab-content hidden"></div>
+        <div id="tab-timeline"     class="tab-content hidden"></div>
+        <div id="tab-finanzas"     class="tab-content hidden"></div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL EDITAR -->
+<div id="modal-editar" class="modal-overlay">
+  <div class="modal" style="max-width:600px">
+    <div class="modal-title">Editar cliente</div>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-top:16px">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Tipo documento</label><select class="form-select" id="e-tipo-doc"><option value="RUC">RUC</option><option value="DNI">DNI</option><option value="Pasaporte">Pasaporte</option><option value="Tax ID">Tax ID</option></select></div>
+        <div class="form-group"><label class="form-label">Número documento</label><input class="form-input" type="text" id="e-ruc" /></div>
+      </div>
+      <div class="form-group"><label class="form-label">Razón social</label><input class="form-input" type="text" id="e-razon" /></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Contacto</label><input class="form-input" type="text" id="e-contacto" /></div>
+        <div class="form-group"><label class="form-label">Teléfono</label><input class="form-input" type="text" id="e-telefono" /></div>
+      </div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" id="e-email" /></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Tipo</label><select class="form-select" id="e-tipo"><option value="importador">Importador</option><option value="exportador">Exportador</option><option value="ambos">Ambos</option></select></div>
+        <div class="form-group"><label class="form-label">País</label><input class="form-input" type="text" id="e-pais" /></div>
+      </div>
+      <div class="form-group"><label class="form-label">Dirección</label><input class="form-input" type="text" id="e-direccion" /></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Vendedor</label><input class="form-input" type="text" id="e-vendedor" /></div>
+        <div class="form-group"><label class="form-label">Condición pago</label><select class="form-select" id="e-condicion"><option>Contado</option><option>Credito 15</option><option>Credito 30</option><option>Credito 45</option><option>Credito 60</option></select></div>
+      </div>
+      <div class="form-group"><label class="form-label">Límite crédito (USD)</label><input class="form-input" type="number" id="e-credito" /></div>
+      <div class="form-group"><label class="form-label">Observaciones</label><input class="form-input" type="text" id="e-obs" /></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="e-cancelar">Cancelar</button>
+      <button class="btn btn-primary" id="e-guardar">Guardar cambios</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/cliente-detalle.js"></script>
+</body>
+</html>

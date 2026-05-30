@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>MarsTech — Depósito Aduanero</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+  <style>
+    .lote-da-card { background:#fff; border:1px solid #eef0f6; border-radius:14px; overflow:hidden; margin-bottom:16px; }
+    .lote-da-head { padding:18px 20px; border-bottom:1px solid #f3f4f6; display:flex; align-items:flex-start; justify-content:space-between; }
+    .dam-badge { font-family:monospace; font-size:13px; font-weight:700; color:#dc2626; background:#fef2f2; padding:4px 10px; border-radius:6px; }
+    .item-da-row { display:flex; align-items:center; gap:12px; padding:10px 20px; border-bottom:1px solid #f9fafb; }
+    .item-da-row:last-child { border-bottom:none; }
+    .item-num { width:28px; height:28px; border-radius:7px; background:#f3f4f6; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#6b7280; flex-shrink:0; }
+    .prog-item { flex:1; height:4px; background:#f3f4f6; border-radius:2px; overflow:hidden; }
+    .prog-item-fill { height:100%; border-radius:2px; background:#7c3aed; }
+    .nac-card { background:#f5f3ff; border:1px solid #ddd6fe; border-radius:10px; padding:14px; margin-bottom:8px; }
+    .tab-da-nav { display:flex; gap:4px; background:#f3f4f6; padding:4px; border-radius:10px; width:fit-content; margin-bottom:20px; }
+    .tab-da-btn { padding:7px 16px; border-radius:7px; font-size:12px; font-weight:600; border:none; background:transparent; color:#6b7280; cursor:pointer; transition:all .12s; }
+    .tab-da-btn.active { background:#7c3aed; color:#fff; }
+  </style>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sb-logo">
+      <div class="sb-logomark">
+        <div class="sb-cube">
+          <div class="sb-cube-dot"></div><div class="sb-cube-dot"></div>
+          <div class="sb-cube-dot"></div><div class="sb-cube-dot"></div>
+        </div>
+        <span class="sb-name">MarsTech</span>
+      </div>
+      <div class="sb-tag">LOGISTICS · v2.0</div>
+    </div>
+    <nav class="sb-nav">
+      <div class="sb-section-lbl">WORKSPACE</div>
+      <a href="dashboard.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Overview</div></a>
+      <a href="clientes.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Clientes</div></a>
+      <a href="ventas.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Ventas</div></a>
+      <div class="sb-spacer"><div class="sb-section-lbl">OPERACIONES</div></div>
+      <a href="ordenes.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Órdenes</div></a>
+      <a href="hitos.html" class="nav-item alert-nav"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Hitos</div></a>
+      <a href="finanzas.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Finanzas</div></a>
+      <div class="sb-spacer"><div class="sb-section-lbl">ALMACENES</div></div>
+      <a href="stock.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Stock</div></a>
+      <a href="deposito-aduanero.html" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Depósito Aduanero</div></a>
+      <a href="direccionamiento.html" class="nav-item active"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Direccionamiento</div><div class="nav-pip"></div></a>
+      <div class="sb-spacer"><div class="sb-section-lbl">SISTEMA</div></div>
+      <a href="#" class="nav-item"><div class="nav-item-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>Usuarios</div></a>
+    </nav>
+    <div class="sb-bottom">
+      <div class="sb-user">
+        <div class="sb-avatar" id="sb-iniciales">AD</div>
+        <div>
+          <div class="sb-uname" id="sb-nombre">Cargando...</div>
+          <div class="sb-urole" id="sb-rol">—</div>
+          <button class="sb-logout" onclick="cerrarSesion()">Cerrar sesión</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="tb-left">
+        <span class="tb-page">Depósito Aduanero</span>
+        <span class="tb-badge">Régimen 70 — DA</span>
+      </div>
+      <div class="tb-right">
+        <button class="btn btn-primary btn-sm" id="btn-nuevo-lote-da">+ Nuevo lote DA</button>
+        <div class="tb-chip green"><div class="tb-dot"></div>Online</div>
+        <div class="tb-date" id="tb-fecha">—</div>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <div class="page-title">Control de depósito aduanero</div>
+          <div class="page-sub">// lotes régimen 70 · nacionalizaciones parciales y totales</div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-secondary btn-sm" id="btn-exportar-da-pdf">Exportar PDF</button>
+          <button class="btn btn-secondary btn-sm" id="btn-exportar-da-excel">Exportar Excel</button>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpi-row" id="kpis-da" style="margin-bottom:20px"></div>
+
+      <!-- Alertas -->
+      <div id="alertas-da"></div>
+
+      <!-- Tabs -->
+      <div class="tab-da-nav">
+        <button class="tab-da-btn active" data-tab="lotes">Lotes DA</button>
+        <button class="tab-da-btn" data-tab="nacionalizaciones">Nacionalizaciones</button>
+        <button class="tab-da-btn" data-tab="reportes">Reportes</button>
+      </div>
+
+      <!-- Filtros -->
+      <div class="filtros" style="margin-bottom:16px">
+        <select class="form-select" id="filtro-estado-da" style="width:auto;min-width:180px">
+          <option value="TODOS">Todos los estados</option>
+          <option value="en_deposito">En depósito</option>
+          <option value="parcialmente_nacionalizado">Parcialmente nacionalizado</option>
+          <option value="nacionalizado_total">Nacionalizado total</option>
+        </select>
+        <select class="form-select" id="filtro-almacen-da" style="width:auto;min-width:180px">
+          <option value="TODOS">Todos los almacenes</option>
+        </select>
+        <input class="form-input" type="text" id="filtro-busqueda-da" placeholder="Buscar DAM, orden o cliente..." style="min-width:240px" />
+      </div>
+
+      <div id="da-content"></div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL NUEVO LOTE DA -->
+<div id="modal-nuevo-da" class="modal-overlay">
+  <div class="modal" style="max-width:700px;max-height:92vh;overflow-y:auto">
+    <div class="modal-title">Nuevo lote — Depósito Aduanero régimen 70</div>
+    <div style="font-size:12px;color:#9ca3af;margin-bottom:20px">El lote se genera automáticamente al numerar una DAM régimen 70, o puedes crearlo manualmente aquí.</div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="background:#fafafa;border:1px solid #f3f4f6;border-radius:10px;padding:16px">
+        <div style="font-size:11px;font-weight:700;color:#374151;text-transform:uppercase;margin-bottom:12px">Datos de la DAM régimen 70</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Número de DAM *</label>
+            <input class="form-input" type="text" id="da-dam" placeholder="118-2026-10-123456" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Fecha numeración *</label>
+            <input class="form-input" type="date" id="da-fecha-num" value="" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Fecha vencimiento DA</label>
+            <input class="form-input" type="date" id="da-fecha-venc" />
+            <div style="font-size:10px;color:#9ca3af;margin-top:3px">El DA tiene plazo de 1 año prorrogable</div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Orden ADU/SLI asociada</label>
+            <select class="form-select" id="da-orden"></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Almacén DA *</label>
+            <select class="form-select" id="da-almacen"></select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Valor FOB (USD) *</label>
+            <input class="form-input" type="number" id="da-fob" placeholder="0.00" step="0.01" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tipo de cambio</label>
+            <input class="form-input" type="number" id="da-tc" placeholder="3.75" step="0.001" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Total ítems DAM</label>
+            <input class="form-input" type="number" id="da-total-items" placeholder="0" min="1" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Descripción general de mercancía</label>
+          <input class="form-input" type="text" id="da-descripcion" placeholder="Descripción general de la mercancía en depósito..." />
+        </div>
+      </div>
+
+      <!-- Items del lote DA -->
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+          <div style="font-size:11px;font-weight:700;color:#374151;text-transform:uppercase">Ítems de la DAM (desglose)</div>
+          <button class="btn btn-secondary btn-sm" id="btn-agregar-item-da">+ Agregar ítem</button>
+        </div>
+        <div id="items-da-form"></div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Observaciones</label>
+        <input class="form-input" type="text" id="da-obs" placeholder="Notas del lote..." />
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="modal-da-cancelar">Cancelar</button>
+      <button class="btn btn-primary" id="modal-da-guardar">Crear lote DA</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL NUEVA NACIONALIZACIÓN -->
+<div id="modal-nac" class="modal-overlay">
+  <div class="modal" style="max-width:640px;max-height:92vh;overflow-y:auto">
+    <div class="modal-title">Nueva orden de nacionalización</div>
+    <div style="font-size:12px;color:#9ca3af;margin-bottom:4px">DAM: <span id="nac-dam-ref" style="font-weight:600;color:#dc2626;font-family:monospace"></span></div>
+    <div style="font-size:12px;color:#9ca3af;margin-bottom:20px">Selecciona los ítems y cantidades a nacionalizar en esta orden.</div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Tipo de orden *</label>
+          <div style="display:flex;gap:8px">
+            <label style="display:flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid #e5e7eb;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600">
+              <input type="radio" name="nac-tipo" value="ADU" checked style="accent-color:#7c3aed" /> ADU
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid #e5e7eb;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600">
+              <input type="radio" name="nac-tipo" value="SLI" style="accent-color:#7c3aed" /> SLI
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Número de orden a crear</label>
+          <input class="form-input" type="text" id="nac-numero-orden" placeholder="ADU-000001 (auto)" readonly style="background:#f9fafb;color:#9ca3af" />
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:11px;font-weight:700;color:#374151;text-transform:uppercase;margin-bottom:10px">Ítems a nacionalizar</div>
+        <div id="nac-items-lista"></div>
+      </div>
+
+      <div style="background:#fafafa;border:1px solid #f3f4f6;border-radius:10px;padding:14px" id="nac-resumen">
+        <div style="font-size:11px;font-weight:700;color:#374151;text-transform:uppercase;margin-bottom:8px">Resumen de nacionalización</div>
+        <div id="nac-resumen-content"></div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Observaciones</label>
+        <input class="form-input" type="text" id="nac-obs" placeholder="Notas de la nacionalización..." />
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="modal-nac-cancelar">Cancelar</button>
+      <button class="btn btn-primary" id="modal-nac-confirmar">Crear orden de nacionalización</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="js/deposito-aduanero.js"></script>
+</body>
+</html>

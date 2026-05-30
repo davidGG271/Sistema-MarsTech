@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>MarsTech — Acceso</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body class="login-body">
+
+  <div class="login-wrap">
+    <div class="login-logo">
+      <div class="login-cube">
+        <div class="login-cube-dot"></div>
+        <div class="login-cube-dot"></div>
+        <div class="login-cube-dot"></div>
+        <div class="login-cube-dot"></div>
+      </div>
+      <div class="login-name">MarsTech</div>
+      <div class="login-sub">Logistics Platform · v2.0</div>
+    </div>
+
+    <div class="login-card">
+      <div id="login-error" class="login-error"></div>
+
+      <div class="form-group">
+        <label class="form-label">Correo electrónico</label>
+        <input class="form-input" type="email" id="login-email" placeholder="tu@empresa.com" />
+      </div>
+
+      <div class="form-group" style="margin-top:14px">
+        <label class="form-label">Contraseña</label>
+        <input class="form-input" type="password" id="login-password" placeholder="••••••••" />
+      </div>
+
+      <button class="btn btn-primary login-btn" id="btn-login" style="margin-top:20px">
+        Iniciar sesión
+      </button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
