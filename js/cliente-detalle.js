@@ -44,7 +44,7 @@ function renderHeader(c) {
   document.getElementById("cli-avatar-grande").textContent = iniciales
   document.getElementById("topbar-nombre").textContent     = c.razon_social
   document.getElementById("cli-nombre-grande").textContent = c.razon_social
-  document.getElementById("cli-ruc-grande").textContent    = `${c.tipo_documento || "RUC"}: ${c.ruc || "—"}`
+  document.getElementById("cli-ruc-grande").textContent    = `${c.tipo_documento || "RUC"}: ${c.numero_documento || "—"}`
   document.getElementById("cli-tipo-badge").textContent    = c.tipo
   document.getElementById("cli-tipo-badge").className      = `pill pill-${c.tipo}`
   document.getElementById("cli-pais-badge").textContent    = c.pais || "Peru"
@@ -119,7 +119,7 @@ function renderPerfil() {
           <div style="font-size:12px;font-weight:700;color:#374151;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:14px">Información general</div>
           <div style="display:flex;flex-direction:column;gap:12px">
             ${campo("Tipo de documento", c.tipo_documento || "RUC")}
-            ${campo("Número de documento", c.ruc)}
+            ${campo("Número de documento", c.numero_documento)}
             ${campo("Razón social", c.razon_social)}
             ${campo("Tipo de cliente", c.tipo)}
             ${campo("País", c.pais || "Peru")}
@@ -393,7 +393,7 @@ async function renderFinanzas() {
 document.getElementById("btn-editar-cliente").addEventListener("click", () => {
   const c = clienteActual
   document.getElementById("e-tipo-doc").value  = c.tipo_documento || "RUC"
-  document.getElementById("e-ruc").value       = c.ruc || ""
+  document.getElementById("e-ruc").value       = c.numero_documento || ""
   document.getElementById("e-razon").value     = c.razon_social || ""
   document.getElementById("e-contacto").value  = c.contacto || ""
   document.getElementById("e-telefono").value  = c.telefono || ""
@@ -415,7 +415,7 @@ document.getElementById("e-cancelar").addEventListener("click", () => {
 document.getElementById("e-guardar").addEventListener("click", async () => {
   const { error } = await db.from("clientes").update({
     tipo_documento:  document.getElementById("e-tipo-doc").value,
-    ruc:             document.getElementById("e-ruc").value.trim(),
+    numero_documento: document.getElementById("e-ruc").value.trim(),
     razon_social:    document.getElementById("e-razon").value.trim(),
     contacto:        document.getElementById("e-contacto").value.trim(),
     telefono:        document.getElementById("e-telefono").value.trim() || null,
