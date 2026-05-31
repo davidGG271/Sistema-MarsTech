@@ -41,7 +41,7 @@ function filtrarYMostrar() {
     .filter(c => tipo === "TODOS" || c.tipo === tipo)
     .filter(c =>
       c.razon_social.toLowerCase().includes(busqueda) ||
-      (c.ruc && c.ruc.toLowerCase().includes(busqueda)) ||
+      (c.numero_documento && c.numero_documento.toLowerCase().includes(busqueda)) ||
       (c.contacto && c.contacto.toLowerCase().includes(busqueda))
     )
 
@@ -62,7 +62,7 @@ function renderTabla(clientes) {
     const iniciales = c.razon_social.split(" ").map(n => n[0]).join("").slice(0,2).toUpperCase()
     const fila = document.createElement("tr")
     fila.innerHTML = `
-      <td class="text-mono" style="font-size:12px">${c.ruc || "—"}</td>
+      <td class="text-mono" style="font-size:12px">${c.numero_documento || "—"}</td>
       <td>
         <div style="display:flex;align-items:center;gap:10px">
           <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#7c3aed,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0">${iniciales}</div>
@@ -127,7 +127,7 @@ function abrirModalNuevo() {
 function abrirModalEditar(c) {
   clienteEditando = c
   document.getElementById("cli-tipo-doc").value  = c.tipo_documento || "RUC"
-  document.getElementById("cli-ruc").value       = c.ruc || ""
+  document.getElementById("cli-ruc").value       = c.numero_documento || ""
   document.getElementById("cli-razon").value     = c.razon_social || ""
   document.getElementById("cli-contacto").value  = c.contacto || ""
   document.getElementById("cli-telefono").value  = c.telefono || ""
@@ -161,7 +161,7 @@ document.getElementById("modal-cli-guardar").addEventListener("click", async () 
 
   const payload = {
     tipo_documento:  document.getElementById("cli-tipo-doc").value,
-    ruc,
+    numero_documento: ruc,
     razon_social:    razon,
     contacto,
     telefono:        document.getElementById("cli-telefono").value.trim() || null,
@@ -198,7 +198,7 @@ async function abrirVistaRapida(c) {
   const iniciales = c.razon_social.split(" ").map(n => n[0]).join("").slice(0,2).toUpperCase()
   document.getElementById("vr-avatar").textContent    = iniciales
   document.getElementById("vr-nombre").textContent    = c.razon_social
-  document.getElementById("vr-ruc").textContent       = `${c.tipo_documento || "RUC"}: ${c.ruc || "—"}`
+  document.getElementById("vr-ruc").textContent       = `${c.tipo_documento || "RUC"}: ${c.numero_documento || "—"}`
   document.getElementById("vr-tipo").textContent      = c.tipo
   document.getElementById("vr-tipo").className        = `pill pill-${c.tipo}`
   document.getElementById("vr-contacto").textContent  = c.contacto || "—"
