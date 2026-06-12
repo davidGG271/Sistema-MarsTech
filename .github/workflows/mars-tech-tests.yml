@@ -52,6 +52,6 @@ jobs:
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: Evidencias-Universitarias
+        name: Detalle de Fallos
         path: ./mars-tech-testing/Evidencias/
         retention-days: 30

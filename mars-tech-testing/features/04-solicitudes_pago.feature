@@ -1,4 +1,4 @@
-Feature: Registro de Solicitudes de Pago (US-X)
+Feature: Registro de Solicitudes de Pago (US-15)
   Como personal de finanzas
   Quiero registrar solicitudes de pago asociadas a una orden operativa
   Para que sean procesadas por tesorería

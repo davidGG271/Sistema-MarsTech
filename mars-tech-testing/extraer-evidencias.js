@@ -20,9 +20,8 @@ let extracciones = 0;
 report.suites.forEach(fileSuite => {
   fileSuite.suites.forEach(describeSuite => {
     describeSuite.specs.forEach(spec => {
-      // Extraemos el código como CLI-UAT-002 del título "CLI-UAT-002 Registrar cliente..."
-      const match = spec.title.match(/([A-Z]+-[A-Z]+-\d+)/);
-      const testId = match ? match[1] : spec.title.substring(0, 15).replace(/[^a-zA-Z0-9-]/g, '');
+      // Usamos el título completo limpiando caracteres inválidos
+      const testId = spec.title.replace(/[<>:"/\\|?*]/g, '').trim();
 
       spec.tests.forEach(test => {
         test.results.forEach(result => {

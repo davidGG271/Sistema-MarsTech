@@ -1,4 +1,4 @@
-Feature: Trazabilidad Hitos (US-07)
+Feature: Trazabilidad Hitos (US-07 a US-09)
 
   Background:
     Given el usuario ha iniciado sesión correctamente
