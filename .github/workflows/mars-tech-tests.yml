@@ -20,7 +20,7 @@ jobs:
         
     - name: Install dependencies
       working-directory: ./mars-tech-testing
-      run: npm install
+      run: npm ci
       
     - name: Install Playwright Browsers
       working-directory: ./mars-tech-testing
@@ -28,7 +28,7 @@ jobs:
       
     - name: Start local web server
       run: |
-        npx http-server . -p 8080 -c-1 &
+        npx -y http-server . -p 8080 -c-1 &
         sleep 5
       
     - name: Run Playwright tests
