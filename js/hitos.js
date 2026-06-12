@@ -266,6 +266,10 @@ async function registrarHito() {
   const fecha       = document.getElementById("modal-fecha").value
 
   if (!fecha) { alert("Selecciona la fecha y hora"); return }
+  if (observacion.length > 0 && observacion.length < 3) {
+    alert("La observación no cumple con la longitud mínima requerida.");
+    return;
+  }
 
   const { error } = await db.from("hitos_operativos").insert({
     orden_id:         ordenActual.id,

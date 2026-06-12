@@ -508,7 +508,7 @@ async function generarOrdenDesdeCotizacion(cot, tipo) {
     .from("ordenes").select("numero")
     .like("numero", `${tipo}-%`)
     .order("created_at", { ascending: false })
-    .limit(1).single()
+    .limit(1).maybeSingle()
 
   let nuevoNumero = `${tipo}-000001`
   if (ultima) {

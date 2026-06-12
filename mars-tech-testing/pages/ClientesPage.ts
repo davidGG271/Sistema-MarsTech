@@ -5,6 +5,10 @@ export class ClientesPage {
 
   // Elementos de la vista principal
   readonly btnNuevoCliente: Locator;
+  readonly modalCliente: Locator;
+
+  // Formulario General
+  readonly inputTipoDoc: Locator;
   readonly inputBusqueda: Locator;
   readonly selectFiltroTipo: Locator;
   readonly tbodyClientes: Locator;
@@ -32,6 +36,7 @@ export class ClientesPage {
 
     // Locators Vista
     this.btnNuevoCliente = page.locator('#btn-nuevo-cliente');
+    this.modalCliente = page.locator('#modal-cliente');
     this.inputBusqueda = page.locator('#filtro-busqueda');
     this.selectFiltroTipo = page.locator('#filtro-tipo');
     this.tbodyClientes = page.locator('#tbody-clientes');
@@ -59,6 +64,11 @@ export class ClientesPage {
 
   async abrirModalNuevoCliente() {
     await this.btnNuevoCliente.click();
+  }
+
+  async editarCliente(ruc: string, razonSocial: string) {
+    const row = this.tbodyClientes.locator('tr').filter({ hasText: ruc });
+    await row.locator('.btn-editar').click();
   }
 
   async buscarCliente(texto: string) {

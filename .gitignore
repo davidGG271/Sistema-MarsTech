@@ -1,0 +1,6 @@
+
+mars-tech-testing/node_modules/
+mars-tech-testing/.features-gen/
+mars-tech-testing/playwright-report/
+mars-tech-testing/test-results/
+mars-tech-testing/playwright/.cache/
