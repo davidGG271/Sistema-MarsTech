@@ -35,10 +35,23 @@ jobs:
       working-directory: ./mars-tech-testing
       run: npx bddgen && npx playwright test --project=chromium --workers=1
       
+    - name: Extraer evidencias limpias
+      working-directory: ./mars-tech-testing
+      if: always()
+      run: node extraer-evidencias.js
+
     - name: Upload Playwright Report
       uses: actions/upload-artifact@v4
       if: always()
       with:
         name: playwright-report
         path: ./mars-tech-testing/playwright-report/
+        retention-days: 30
+
+    - name: Upload Evidencias Limpias
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: Evidencias-Universitarias
+        path: ./mars-tech-testing/Evidencias/
         retention-days: 30
