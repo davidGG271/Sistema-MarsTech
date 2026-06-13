@@ -48,10 +48,18 @@ jobs:
         path: ./mars-tech-testing/playwright-report/
         retention-days: 30
 
-    - name: Upload Evidencias Limpias
+    - name: Upload Evidencias de Fallos
       uses: actions/upload-artifact@v4
       if: always()
       with:
         name: Detalle de Fallos
-        path: ./mars-tech-testing/Evidencias/
+        path: ./mars-tech-testing/Evidencias_Fallos/
+        retention-days: 30
+
+    - name: Upload Evidencias de Exitos
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: Detalle de Éxitos
+        path: ./mars-tech-testing/Evidencias_Exitos/
         retention-days: 30
