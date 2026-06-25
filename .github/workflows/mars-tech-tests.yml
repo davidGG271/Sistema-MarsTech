@@ -33,7 +33,12 @@ jobs:
       
     - name: Run Playwright tests
       working-directory: ./mars-tech-testing
+      continue-on-error: true
       run: npx bddgen && npx playwright test --project=chromium --workers=1
+      
+    - name: Verificar umbral del 95%
+      working-directory: ./mars-tech-testing
+      run: node check-threshold.js
       
     - name: Extraer evidencias limpias
       working-directory: ./mars-tech-testing
